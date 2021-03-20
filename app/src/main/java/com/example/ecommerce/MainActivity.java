@@ -35,8 +35,7 @@ import java.net.URL;
 import  static com.example.ecommerce.Login.tokenpassing;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-   // ListView listView;
-   // ListView listView1;
+
     TextView tv1,tv2,tv3,tv4;
     TextView price1,price2,price3,price4;
     Button b1,b2,b3,b4;

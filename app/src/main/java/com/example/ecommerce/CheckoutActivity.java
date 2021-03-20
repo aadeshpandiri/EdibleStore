@@ -17,6 +17,8 @@ import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 
+import static com.example.ecommerce.cart.lengthofcart;
+
 public class CheckoutActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -34,6 +36,16 @@ public class CheckoutActivity extends AppCompatActivity implements NavigationVie
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
+
+        setSupportActionBar(toolbar);
+
+        //navigationView.bringToFront();
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_open, R.string.navigation_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+        navigationView.setNavigationItemSelectedListener(this);
+
+        navigationView.setCheckedItem(R.id.Homepage);
 
 
         pnames1=findViewById(R.id.prod_names1);
@@ -54,6 +66,8 @@ public class CheckoutActivity extends AppCompatActivity implements NavigationVie
 
         pay = (Button)findViewById(R.id.paybtn);
 
+
+
         Intent i=getIntent();
         pname1=i.getStringExtra("pname1");
         pname2=i.getStringExtra("pname2");
@@ -67,17 +81,40 @@ public class CheckoutActivity extends AppCompatActivity implements NavigationVie
 
         System.out.println("Hello quant here "+quan1+" "+quan2+" "+quan3);
 
-        pnames1.setText(pname1);
-        pnames2.setText(pname2);
-        pnames3.setText(pname3);
+        if(lengthofcart >= 3)
+        {
+            pnames1.setText(pname1);
+            prices1.setText(price1);
+            quans1.setText("Quantity : "+quan1);
 
-        prices1.setText(price1);
-        prices2.setText(price2);
-        prices3.setText(price3);
+            pnames2.setText(pname2);
+            prices2.setText(price2);
+            quans2.setText("Quantity : "+quan2);
 
-       quans1.setText("Quantity : "+quan1);
-        quans2.setText("Quantity : "+quan2);
-        quans3.setText("Quantity : "+quan3);
+            pnames3.setText(pname3);
+            prices3.setText(price3);
+            quans3.setText("Quantity : "+quan3);
+        }
+        else if(lengthofcart == 2)
+        {
+            pnames1.setText(pname1);
+            prices1.setText(price1);
+            quans1.setText("Quantity : "+quan1);
+
+            pnames2.setText(pname2);
+            prices2.setText(price2);
+            quans2.setText("Quantity : "+quan2);
+        }
+        else
+        {
+            pnames1.setText(pname1);
+            prices1.setText(price1);
+            quans1.setText("Quantity : "+quan1);
+        }
+
+
+
+
 
         fp1=Integer.parseInt(price1.substring(1))*Integer.parseInt(quan1);
         fp2=Integer.parseInt(price2.substring(1))*Integer.parseInt(quan2);
@@ -92,15 +129,7 @@ public class CheckoutActivity extends AppCompatActivity implements NavigationVie
         System.out.println("Im here "+pname1+" "+pname2+" "+pname3+" "+price1+" "+price2+" "+price3);
 
         //chkoutbtn = (Button)findViewById(R.id.checkoutbtn);
-        setSupportActionBar(toolbar);
 
-        //navigationView.bringToFront();
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_open, R.string.navigation_close);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
-        navigationView.setNavigationItemSelectedListener(this);
-
-        navigationView.setCheckedItem(R.id.Homepage);
 
         pay.setOnClickListener(new View.OnClickListener() {
             @Override

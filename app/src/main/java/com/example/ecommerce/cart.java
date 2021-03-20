@@ -45,6 +45,7 @@ public class cart extends AppCompatActivity implements NavigationView.OnNavigati
     androidx.appcompat.widget.Toolbar toolbar;
     Button chkoutbtn;
     String answer;
+    public static int lengthofcart;
 
     @SuppressLint("UseCompatLoadingForDrawables")
     @Override
@@ -103,9 +104,11 @@ public class cart extends AppCompatActivity implements NavigationView.OnNavigati
                 }
                 //System.out.println(jsonarraytitleretrieval[i]);
             }
-            price1.setText("$" + jsonarraypriceretrieval[0]);
-            pname1.setText(jsonarraytitleretrieval[0]);
-            quan1.setText("qty:" + jsonarrayqtyretrieval[0]);
+            lengthofcart = jsonarraypriceretrieval.length;
+            if(jsonarraypriceretrieval.length >= 3) {
+                price1.setText("$" + jsonarraypriceretrieval[jsonarraypriceretrieval.length - 3]);
+                pname1.setText(jsonarraytitleretrieval[jsonarraytitleretrieval.length - 3]);
+                quan1.setText("qty:" + jsonarrayqtyretrieval[jsonarrayqtyretrieval.length - 3]);
 //            char k=pname1.getText().toString().charAt(0);
 //
 //                System.out.println(k+"in k");
@@ -116,12 +119,30 @@ public class cart extends AppCompatActivity implements NavigationView.OnNavigati
 //            if(k=='B')
 //                //System.out.println("inside if k");
 //                imgprod1.setImageDrawable(bananadraw);
-            price2.setText("$" + jsonarraypriceretrieval[1]);
-            pname2.setText(jsonarraytitleretrieval[1]);
-            quan2.setText("qty:" + jsonarrayqtyretrieval[1]);
-            price3.setText("$" + jsonarraypriceretrieval[2]);
-            pname3.setText(jsonarraytitleretrieval[2]);
-            quan3.setText("qty:" + jsonarrayqtyretrieval[2]);
+                price2.setText("$" + jsonarraypriceretrieval[jsonarraypriceretrieval.length - 2]);
+                pname2.setText(jsonarraytitleretrieval[jsonarraytitleretrieval.length - 2]);
+                quan2.setText("qty:" + jsonarrayqtyretrieval[jsonarrayqtyretrieval.length - 2]);
+                price3.setText("$" + jsonarraypriceretrieval[jsonarraypriceretrieval.length - 1]);
+                pname3.setText(jsonarraytitleretrieval[jsonarraytitleretrieval.length - 1]);
+                quan3.setText("qty:" + jsonarrayqtyretrieval[jsonarrayqtyretrieval.length - 1]);
+            }
+            else if(jsonarraypriceretrieval.length==2)
+            {
+                price1.setText("$" + jsonarraypriceretrieval[jsonarraypriceretrieval.length - 2]);
+                pname1.setText(jsonarraytitleretrieval[jsonarraytitleretrieval.length - 2]);
+                quan1.setText("qty:" + jsonarrayqtyretrieval[jsonarrayqtyretrieval.length - 2]);
+                price2.setText("$" + jsonarraypriceretrieval[jsonarraypriceretrieval.length - 1]);
+                pname2.setText(jsonarraytitleretrieval[jsonarraytitleretrieval.length - 1]);
+                quan2.setText("qty:" + jsonarrayqtyretrieval[jsonarrayqtyretrieval.length - 1]);
+
+
+            }
+            else if(jsonarraypriceretrieval.length == 1)
+            {
+                price1.setText("$" + jsonarraypriceretrieval[jsonarraypriceretrieval.length - 1]);
+                pname1.setText(jsonarraytitleretrieval[jsonarraytitleretrieval.length - 1]);
+                quan1.setText("qty:" + jsonarrayqtyretrieval[jsonarrayqtyretrieval.length - 1]);
+            }
 
 
         }
