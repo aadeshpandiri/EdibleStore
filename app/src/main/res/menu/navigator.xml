@@ -1,21 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    >
+    xmlns:tools="http://schemas.android.com/tools">
 
     <group android:checkableBehavior="single">
 
         <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_home"
+            android:id="@+id/Homepage"
+            android:icon="@drawable/home"
             android:title="Home" />
-        <item
-            android:id="@+id/nav_photo"
-            android:icon="@drawable/ic_home"
-            android:title="Upload photo" />
-        <item
-            android:id="@+id/nav_settings"
-            android:icon="@drawable/ic_home"
-            android:title="Settings" />
 
     </group>
+    <item android:title="Products">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_fruits"
+                    android:icon="@drawable/apple"
+                    android:title="Fruits" />
+
+                <item
+                    android:id="@+id/nav_veg"
+                    android:icon="@drawable/carrot"
+                    android:title="Vegetables" />
+
+                <item
+                    android:id="@+id/nav_leaf_veg"
+                    android:icon="@drawable/lettuce"
+                    android:title="Leafy Vegetables" />
+
+
+
+
+            </group>
+        </menu>
+    </item>
+
+
+
+    <item android:title="Brands">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_brands"
+                    android:icon="@drawable/brands"
+                    android:title="Brands" />
+
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="Stores">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_heera"
+                    android:icon="@drawable/store"
+                    android:title="Heerastore" />
+
+                <item
+                    android:id="@+id/nav_Retro"
+                    android:icon="@drawable/store"
+                    android:title="Retrofresh" />
+
+
+            </group>
+        </menu>
+    </item>
+
+
 </menu>

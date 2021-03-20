@@ -69,7 +69,7 @@
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:id="@+id/img_prod1"
-                        android:src="@drawable/ic_launcher_background"/>
+                        android:src="@drawable/apples"/>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -78,7 +78,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/prod_name1"
+                            android:id="@+id/prod_names1"
                             android:text="Carrot"
                             android:textSize="20sp"
                             android:layout_marginLeft="10dp"
@@ -91,7 +91,7 @@
                             android:textSize="18sp"
                             android:layout_marginLeft="10dp"
                             android:layout_weight="6"
-                            android:id="@+id/price1"/>
+                            android:id="@+id/prices1"/>
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -104,12 +104,13 @@
                                 android:textSize="18sp"
                                 android:layout_marginLeft="10dp"
                                 android:layout_weight="6"
-                                android:id="@+id/quant1"/>
-                            <EditText
+                                android:id="@+id/quants1"/>
+                            <TextView
                                 android:layout_width="40dp"
                                 android:layout_height="wrap_content"
-                                android:text="1"
-                                android:id="@+id/quantity1"
+                                android:text="50"
+
+                                android:id="@+id/FP1"
                                 />
 
                             <!--
@@ -153,7 +154,7 @@
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:id="@+id/img_prod2"
-                        android:src="@drawable/ic_launcher_background"/>
+                        android:src="@drawable/oranges"/>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -162,7 +163,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/prod_name2"
+                            android:id="@+id/prod_names2"
                             android:text="Carrot"
                             android:textSize="20sp"
                             android:layout_marginLeft="10dp"
@@ -175,7 +176,7 @@
                             android:textSize="18sp"
                             android:layout_marginLeft="10dp"
                             android:layout_weight="6"
-                            android:id="@+id/price2"/>
+                            android:id="@+id/prices2"/>
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -188,12 +189,14 @@
                                 android:textSize="18sp"
                                 android:layout_marginLeft="10dp"
                                 android:layout_weight="6"
-                                android:id="@+id/quant2"/>
-                            <EditText
+                                android:id="@+id/quants2"/>
+                            <TextView
                                 android:layout_width="40dp"
                                 android:layout_height="wrap_content"
-                                android:text="1"
-                                android:id="@+id/quantity2"
+                                android:text="50"
+
+                                android:id="@+id/FP2"
+
                                 />
 
                             <!--
@@ -236,7 +239,7 @@
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:id="@+id/img_prod3"
-                        android:src="@drawable/ic_launcher_background"/>
+                        android:src="@drawable/grapes"/>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -245,7 +248,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/prod_name3"
+                            android:id="@+id/prod_names3"
                             android:text="Carrot"
                             android:textSize="20sp"
                             android:layout_marginLeft="10dp"
@@ -258,7 +261,7 @@
                             android:textSize="18sp"
                             android:layout_marginLeft="10dp"
                             android:layout_weight="6"
-                            android:id="@+id/price3"/>
+                            android:id="@+id/prices3"/>
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -271,12 +274,13 @@
                                 android:textSize="18sp"
                                 android:layout_marginLeft="10dp"
                                 android:layout_weight="6"
-                                android:id="@+id/quant3"/>
-                            <EditText
+                                android:id="@+id/quants3"/>
+                            <TextView
+                                android:id="@+id/FP3"
                                 android:layout_width="40dp"
+
                                 android:layout_height="wrap_content"
-                                android:text="1"
-                                android:id="@+id/quantity3"
+                                android:text="50"
 
                                 />
 
@@ -308,9 +312,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:text="Checkout"
-                android:id="@+id/checkoutbtn"
-                android:onClick="gotoCheckout"
+                android:text="Proceed to pay"
+                android:id="@+id/paybtn"
+
                 android:textColor="@color/design_default_color_primary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="250dp"
     android:orientation="vertical"
-    android:background="@drawable/ic_launcher_background"
+    android:layout_marginTop="30dp"
+    android:background="@drawable/headerpic"
     android:alpha="0.8"
     android:gravity="bottom"
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
@@ -13,8 +14,10 @@
         android:id="@+id/label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ecommerce"
+        android:text="EDIBLE STORE"
+        android:layout_marginBottom="1dp"
+        android:layout_gravity="center"
         android:textColor="#000000"
-        android:textSize="30sp"
+        android:textSize="20dp"
         android:textStyle="bold" />
 </LinearLayout>
