@@ -69,8 +69,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         navigationView.setCheckedItem(R.id.Homepage);
 
-        //listView = (ListView) findViewById(R.id.listView);
-        //listView1= (ListView) findViewById(R.id.listView1);
+
          tv1 = (TextView)findViewById(R.id.tv1);
          tv2 = (TextView)findViewById(R.id.tv2);
          tv3 = (TextView)findViewById(R.id.tv3);
@@ -134,6 +133,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
                 else
                 {
+
 
                     Toast.makeText(MainActivity.this, "Please Login ", Toast.LENGTH_SHORT).show();
                 }
@@ -403,7 +403,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
              answer = GotoCart.debugqtyfun();
             System.out.println("Im in mainActivity"+(answer));
             Intent in1111 = new Intent(MainActivity.this,cart.class);
-           // in1111.setAction(answer);
+
             in1111.putExtra("cartdata",answer);
             startActivity(in1111);
             return true;

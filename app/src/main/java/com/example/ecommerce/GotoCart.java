@@ -41,15 +41,11 @@ public class GotoCart {
                 Log.i("Response call try ", "4");
                 int s = response.code();
                 ResponseBody responseBody = response.body();
-                // Toast.makeText(Debugqty.this,".....", Toast.LENGTH_SHORT).show();
 
-
-
-                //System.out.println(responseBody.getClass());
-                //System.out.println("Response message is: "+j);
                 String f = String.valueOf(response.errorBody());
                 Log.i("Response  error is ", f);
                 Log.i("Response from url ", String.valueOf(s));
+                if(s == 200) am="Yes";
                 if (response.isSuccessful()) {
                     am =  "Yes";
                     try {
@@ -63,6 +59,7 @@ public class GotoCart {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+
                 }else am="NO";
 
             }

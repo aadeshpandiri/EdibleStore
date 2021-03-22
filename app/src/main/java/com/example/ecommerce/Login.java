@@ -156,6 +156,8 @@ public class Login extends AppCompatActivity implements NavigationView.OnNavigat
         System.out.println(token);
        Toast.makeText(this, k.getString("token"), Toast.LENGTH_LONG).show();
         tokenpassing = k.getString("token");
+        Intent i1200 = new Intent(getApplicationContext(),GotoCart.class);
+         i1200.putExtra("logintoken",tokenpassing);
        Intent i100 = new Intent(getApplicationContext(),MainActivity.class);
        startActivity(i100);
 
