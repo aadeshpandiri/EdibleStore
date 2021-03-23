@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/id_cart"
+        android:title="Cart"
+        android:orderInCategory="100"
+        android:icon="@drawable/cart"
+        app:showAsAction="always" />
+    <item android:id="@+id/id_login"
+        android:title="Login"
+        android:orderInCategory="101"
+        app:showAsAction="never" />
+    <item
+        android:title="Register"
+        android:id="@+id/id_register"
+        android:orderInCategory="102"
+        app:showAsAction="never" >
+
+    </item>
+</menu>
+<!--
+
+    <?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+
+xmlns:app1="http://schemas.android.com/apk/res-auto">
+<item
+    android:id="@+id/cart"
+    android:icon="@drawable/ic_baseline_shopping_cart_24"
+    android:title="Cart"
+    app1:showAsAction="always"
+
+    />
+<item
+    android:id="@+id/cart2"
+    android:icon="@drawable/ic_signout"
+    android:title="sign out"
+    app1:showAsAction="always"
+    />
+
+
+</menu>
+-->
