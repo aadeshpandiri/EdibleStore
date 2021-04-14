@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import static com.example.ecommerce.MainActivity.ipaddresscode;
 
 class RetrofitClient3 {  // 192.168.43.40
-    private static final String BASE_URl="http://"+ipaddresscode+":8081/rest/users/";
+    private static final String BASE_URl="http://"+ipaddresscode+":8081/v1/";
     private static RetrofitClient3 mInstance;
     //private final Object Chain;
     private Retrofit retrofit;

@@ -72,7 +72,7 @@ public class Login extends AppCompatActivity implements NavigationView.OnNavigat
         //192.168.0.5 192.168.0.7  192.168.0.7
        // getJSON("http://192.168.0.7:8084/rest/users/login?email=abc@gmail.com&password=1234");
         //192.168.43.72  192.168.43.40  192.168.0.195
-         getJSON("http://"+ipaddresscode+":8081/rest/users/login?email="+a+"&password="+b);
+         getJSON("http://"+ipaddresscode+":8081/v1/login?email="+a+"&password="+b);
     }
 
 //        btLogin.setOnClickListener(new View.OnClickListener() {

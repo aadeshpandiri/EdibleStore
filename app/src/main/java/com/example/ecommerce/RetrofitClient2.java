@@ -9,7 +9,7 @@ import static com.example.ecommerce.MainActivity.ipaddresscode;
 
 class RetrofitClient2 {
    //192.168.0.7  192.168.43.40
-    private static final String BASE_URl="http://"+ipaddresscode+":8081/rest/users/";
+    private static final String BASE_URl="http://"+ipaddresscode+":8081/v1/";
     private static RetrofitClient2 mInstance;
     //private final Object Chain;
     private Retrofit retrofit;

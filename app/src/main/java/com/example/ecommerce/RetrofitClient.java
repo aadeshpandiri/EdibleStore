@@ -8,7 +8,7 @@ import static com.example.ecommerce.MainActivity.ipaddresscode;
 
 class RetrofitClient {
 
-    private static final String BASE_URl="http://"+ipaddresscode+":8081/rest/users/";
+    private static final String BASE_URl="http://"+ipaddresscode+":8081/v1/";
     private static RetrofitClient mInstance;
     //private final Object Chain;
     private Retrofit retrofit;

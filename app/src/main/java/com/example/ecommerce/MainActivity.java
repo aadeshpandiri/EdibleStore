@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         tchange = findViewById(R.id.textchange);
 
         String temp = tokenpassing;
-        getJSON("http://"+ipaddresscode+":8082/rest/products/all");
+        getJSON("http://"+ipaddresscode+":8082/v1/all");
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
