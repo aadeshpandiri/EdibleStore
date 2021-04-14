@@ -23,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
@@ -31,11 +32,18 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
 
+import java.io.IOException;
 import java.net.Inet4Address;
 
 
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 import static com.example.ecommerce.GotoCart.json;
 import static com.example.ecommerce.GotoCart.sjs;
+import static com.example.ecommerce.Login.tokenpassing;
 
 public class cart extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     TextView pname1,price1,quan1,pname2,price2,quan2,pname3,price3,quan3;
@@ -244,5 +252,70 @@ public class cart extends AppCompatActivity implements NavigationView.OnNavigati
 
         startActivity(i111);
 
+
+        debugqtyfun(tokenpassing,Integer.parseInt(quants1.getText().toString()),pname1.getText().toString());
+        debugqtyfun(tokenpassing,Integer.parseInt(quants2.getText().toString()),pname2.getText().toString());
+        debugqtyfun(tokenpassing,Integer.parseInt(quants3.getText().toString()),pname3.getText().toString());
+
+
+    }
+    public void debugqtyfun(String tokenpassing1,int quantity,String titlename) {
+        JsonObject params = new JsonObject();
+        params.addProperty("token", tokenpassing1);
+        params.addProperty("qty", quantity);
+        params.addProperty("title", titlename);
+
+        Call<ResponseBody> call = RetrofitClient3.getInstance().getApi3().updateqyt(
+                "Bearer "+tokenpassing, params
+        );
+
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                Log.i("on Response method ", "6");
+                Log.i("Response call try ", "4");
+                int s = response.code();
+                ResponseBody responseBody = response.body();
+               // Toast.makeText(cart.this,".....", Toast.LENGTH_SHORT).show();
+
+                JsonArray jsonArray;
+
+                //System.out.println(responseBody.getClass());
+                //System.out.println("Response message is: "+j);
+                String f = String.valueOf(response.errorBody());
+                Log.i("Response  error is ", f);
+                Log.i("Response from url ", String.valueOf(s));
+                if (response.isSuccessful()) {
+                    //Toast.makeText(cart.this, "Registered successfully", Toast.LENGTH_SHORT).show();
+                    try {
+                        JSONArray json = new JSONArray(response.body().string());
+                        Log.i("UPDATE QTY JSON ", String.valueOf(json));
+                       // Toast.makeText(cart.this, String.valueOf(json) , Toast.LENGTH_SHORT).show();
+                        String[] heroes = new String[json.length()];
+                        for (int i = 0; i < json.length(); i++) {
+                            JSONObject obj = json.getJSONObject(i);
+                            heroes[i] = obj.getString("amount");
+                            System.out.println(heroes[i]);
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                } else {
+                    //Toast.makeText(cart.this, "Registration not successful", Toast.LENGTH_SHORT).show();
+                }
+
+                // Toast.makeText(MainActivity.this, s, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Log.i("Error is ", t.getMessage());
+            }
+
+
+        });
     }
 }

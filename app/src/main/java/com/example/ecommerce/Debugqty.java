@@ -46,7 +46,7 @@ public class Debugqty extends AppCompatActivity {
         JsonObject params = new JsonObject();
         params.addProperty("token", tokenpassing);
         params.addProperty("qty", 10);
-        params.addProperty("title", "Apples(kg)-retro");
+        params.addProperty("title", "titlename");
 
         Call<ResponseBody> call = RetrofitClient3.getInstance().getApi3().updateqyt(
                 "Bearer "+tokenpassing, params
@@ -102,3 +102,4 @@ public class Debugqty extends AppCompatActivity {
         });
     }
     }
+

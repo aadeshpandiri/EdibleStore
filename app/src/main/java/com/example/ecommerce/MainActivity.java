@@ -3,6 +3,9 @@ package com.example.ecommerce;
 import com.example.ecommerce.addtocart;
 import com.example.ecommerce.updatequantity;
 import com.example.ecommerce.GotoCart;
+
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -32,7 +35,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import static com.example.ecommerce.Login.loginaftername;
 import  static com.example.ecommerce.Login.tokenpassing;
+
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -43,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     TextView tv11,tv22,tv33,tv44;
     TextView price11,price22,price33,price44;
     Button b11,b22,b33,b44;
+    TextView tchange;
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -50,7 +56,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
      public String[] names;
     public  String answer;
     public addtocart atc;
-    public static String ipaddresscode = "192.168.10.14";
+    public static String ipaddresscode = "";
+
+
+
+   // String add = pass;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +79,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
         navigationView.setCheckedItem(R.id.Homepage);
+
+        String kuuu = getIntent().getStringExtra("passkey");
+        System.out.println("in main ipaddress"+kuuu);
+        ipaddresscode = kuuu;
 
 
          tv1 = (TextView)findViewById(R.id.tv1);
@@ -90,6 +105,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         b2 = findViewById(R.id.add22);
         b3 = findViewById(R.id.add33);
         b4 = findViewById(R.id.add44);
+        tchange = findViewById(R.id.textchange);
+
         String temp = tokenpassing;
         getJSON("http://"+ipaddresscode+":8082/rest/products/all");
         b1.setOnClickListener(new View.OnClickListener() {
@@ -144,6 +161,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 // Toast.makeText(MainActivity.this, tv11.getText().toString()+" "+price11.getText().toString()+" \n"+tokenpassing, Toast.LENGTH_SHORT).show();
             }
         });
+
+        System.out.println("in main:"+ipaddresscode);
 
         b3.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -203,6 +222,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
        // kiran reomved
         // getJSON("http://"+ipaddresscode+":8082/rest/products/all");
         //getJSON("http://localhost:8084/rest/users/login?email=abc@gmail.com&password=1234");
+
+        if(tokenpassing!=null)
+        {
+            tchange.setText("hi "+loginaftername+" !");
+        }
+        else
+        {
+            tchange.setText("Please Login !");
+        }
     }
     private void getJSON(final String urlWebService) {
 
@@ -342,14 +370,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-    @Override
-    public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
+
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.Homepage:
@@ -419,5 +440,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle("Exit !!!! ");
+        builder.setMessage("Do you really want to Exit ?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+
+                MainActivity.super.onBackPressed();
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+
+            }
+        });
+        builder.show();
     }
 }

@@ -22,6 +22,11 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 
@@ -29,6 +34,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Register extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    String emailrrrr,firstname1,lastname1,password1,mobile1,address1,address2;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     androidx.appcompat.widget.Toolbar toolbar;
@@ -88,7 +94,7 @@ public class Register extends AppCompatActivity implements NavigationView.OnNavi
         JsonObject gsonObject = (JsonObject) jsonParser.parse(params.toString());
         System.out.println(gsonObject);
 
-        Call<ResponseBody> call = RetrofitClient.getInstance().getApi().register(
+        Call<ResponseBody> call = RetrofitClient5.getInstance().getApi5().register(
                 gsonObject
         );
 
@@ -104,18 +110,62 @@ public class Register extends AppCompatActivity implements NavigationView.OnNavi
                 String f= String.valueOf(response.errorBody());
                 Log.i("Response  error is ", f);
                 Log.i("Response from url ", String.valueOf(s));
-                if(response.isSuccessful())
-                {
-                    Toast.makeText(Register.this, "Registered successfully", Toast.LENGTH_SHORT).show();
-                    Intent i35 = new Intent(getApplicationContext(),Login.class);
-                    startActivity(i35);
-                }
-                else
-                {
-                    Toast.makeText(Register.this, "Registration not successfull", Toast.LENGTH_SHORT).show();
-                }
 
                 // Toast.makeText(MainActivity.this, s, Toast.LENGTH_SHORT).show();
+                if (response.isSuccessful()) {
+
+                    try {
+                        JSONObject json = new JSONObject(response.body().string());
+                        Log.i("Register ", String.valueOf(json));
+                       // Toast.makeText(Register.this, String.valueOf(json) , Toast.LENGTH_SHORT).show();
+
+
+                        emailrrrr = json.getString("email");
+                         firstname1 = json.getString("first_name");
+                        lastname1 = json.getString("last_name");
+                        password1 = json.getString("password");
+                        mobile1 = json.getString("mobile");
+                        address1 = json.getString("address1");
+                        address2 = json.getString("address2");
+
+                        if(firstname1.equals("please enter valid_name with no less than 3 alphabets")){
+                            Toast.makeText(Register.this, "please enter valid_name with no less than 3 alphabets", Toast.LENGTH_SHORT).show();
+                        }
+                        else if(lastname1.equals("please enter valid_name with no less than 3 alphabets")){
+                            Toast.makeText(Register.this, "please enter valid_name with no less than 3 alphabets", Toast.LENGTH_SHORT).show();
+                        }
+
+                        else if(emailrrrr.equals("User with this emailID already exists")){
+                            Toast.makeText(Register.this, "Email already exists. Try again", Toast.LENGTH_SHORT).show();
+                        }
+                        else if(password1.equals("Password must contain minimum eight characters, at least one uppercase letter, one lowercase letter and one number")){
+                            Toast.makeText(Register.this, "Password must contain minimum eight characters, at least one uppercase letter, one lowercase letter and one number", Toast.LENGTH_SHORT).show();
+                        }
+                        else if(mobile1.equals("Mobile number must be a valid 10 digit number")){
+                            Toast.makeText(Register.this, "Mobile number must be a valid 10 digit number", Toast.LENGTH_SHORT).show();
+                        }
+                        else if(address1.equals("Please enter valid address")){
+                            Toast.makeText(Register.this, "Please enter valid address", Toast.LENGTH_SHORT).show();
+                        }
+                        else if(address2.equals("Please enter valid address")){
+                            Toast.makeText(Register.this, "Please enter valid address", Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+                            Toast.makeText(Register.this, "Registered successfully", Toast.LENGTH_SHORT).show();
+                            Intent i=new Intent(Register.this,Login.class);
+                            startActivity(i);
+
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                } else {
+                    Toast.makeText(Register.this, "Registration not successful", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override

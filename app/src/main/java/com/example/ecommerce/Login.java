@@ -38,6 +38,7 @@ public class Login extends AppCompatActivity implements NavigationView.OnNavigat
     Button btLogin;
     String urlsss;
     public  static String tokenpassing;
+    public  static String loginaftername;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -160,6 +161,9 @@ public class Login extends AppCompatActivity implements NavigationView.OnNavigat
          i1200.putExtra("logintoken",tokenpassing);
        Intent i100 = new Intent(getApplicationContext(),MainActivity.class);
        startActivity(i100);
+       String hhh[] = tvemail.getText().toString().split("@");
+
+       loginaftername = hhh[0];
 
 
 
